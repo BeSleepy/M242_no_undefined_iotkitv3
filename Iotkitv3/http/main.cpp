@@ -5,6 +5,14 @@
 #include "MFRC522.h"
 #include "mbed.h"
 #include <cstdio>
+#include <string>
+#include <iostream>
+#include <format>
+//#include "json.hpp"
+
+// for convenience
+//using json = nlohmann::json;
+
 #if MBED_CONF_IOTKIT_HTS221_SENSOR == true
 #include "HTS221Sensor.h"
 #endif
@@ -19,6 +27,7 @@ OLEDDisplay oled( MBED_CONF_IOTKIT_OLED_RST, MBED_CONF_IOTKIT_OLED_SDA, MBED_CON
 
 // NFC/RFID Reader (SPI)
 MFRC522    rfidReader( MBED_CONF_IOTKIT_RFID_MOSI, MBED_CONF_IOTKIT_RFID_MISO, MBED_CONF_IOTKIT_RFID_SCLK, MBED_CONF_IOTKIT_RFID_SS, MBED_CONF_IOTKIT_RFID_RST ); 
+
 
 
 static DevI2C devI2c( MBED_CONF_IOTKIT_I2C_SDA, MBED_CONF_IOTKIT_I2C_SCL );
@@ -41,7 +50,8 @@ char message[1024];
 int main()
 {
     uint8_t id;
-    float value1, value2;
+    float temperature, humidity;
+    string card_id;
 
    
 
@@ -75,8 +85,9 @@ int main()
     network->get_ip_address(&a);
     printf("IP: %s\n", a.get_ip_address());
 
-
-    oled.printf("Scan Card");  
+    oled.clear();
+    oled.cursor( 1, 0 );    
+    oled.printf("Scan Card");
     while( 1 )
     {
         
@@ -86,37 +97,44 @@ int main()
                 if ( rfidReader.PICC_ReadCardSerial()) 
                 {
                     oled.clear();
+                    card_id = "";
                     oled.cursor( 1, 0 );                
                     // Print Card UID (2-stellig mit Vornullen, Hexadecimal)
                     oled.printf("UID: ");
+                    
                     for ( int i = 0; i < rfidReader.uid.size; i++ )
+                    {
                         oled.printf("%02X:", rfidReader.uid.uidByte[i]);
-                    oled.printf("\r\n");
+                        //printf("%02X:", rfidReader.uid.uidByte[i]);
+                        card_id = card_id + std::to_string(rfidReader.uid.uidByte[i]) + ":";
+                    }
+                    std::cout << std::string(card_id+"\r\n");
+
+
+                   
                     
                     // Print Card type
                     int piccType = rfidReader.PICC_GetType(rfidReader.uid.sak);
-                    oled.printf("PICC Type: %s \r\n", rfidReader.PICC_GetTypeName(piccType) );
 
-                    hum_temp.get_temperature(&value1);
-                    hum_temp.get_humidity(&value2);
-
-                    sprintf( message, "%s?key=%s&field1=%f&field2=%f", host, key, value1, value2 );
-                    printf( "%s\n", message );
+                    hum_temp.get_temperature(&temperature);
+                    hum_temp.get_humidity(&humidity);
+                    //printf("HTS221:  [temp] %.2f C, [hum]   %.2f%%, [UID] %s\r\n", value1, value2, cardid.c_str());
+             
+                    oled.clear();
                     oled.cursor( 1, 0 );
-                    oled.printf( "temp: %3.2f\nhum : %3.2f", value1, value2 );
+                    oled.printf("Scan successful");
 
-                    //myled = 1;
-                    HttpRequest* get_req = new HttpRequest( network, HTTP_POST, message );
-
-                    HttpResponse* get_res = get_req->send();
-                    if (!get_res)
-                    {
-                        printf("HttpRequest failed (error code %d)\n", get_req->get_error());
-                        return 1;
-                    }
-                    delete get_req;
-                    //myled = 0;
-                }  
+                     /*json j= {
+                        {"temperature", value1},
+                        {"humidity", value2},
+                        {"cardId", cardid}
+                    };*/                    //HttpRequest to backend
+                    HttpRequest* post_req = new HttpRequest( network, HTTP_POST, "https://m242cloud.azurewebsites.net/api/iotkit");
+                    char body[1024];
+                    sprintf( body, "{ \"temperature\": \"%f\", \"humidity\": \"%f\", \"UID\": \"%s\"}", temperature, humidity, card_id.c_str());
+                    //sprintf(j);
+                    HttpResponse* post_res = post_req->send(body, strlen(body));
+                }
         }
     }
     

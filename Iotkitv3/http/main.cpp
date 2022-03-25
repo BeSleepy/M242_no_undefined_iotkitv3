@@ -54,8 +54,6 @@ int main()
     string card_id;
 
    
-
-    printf("\tThingSpeak\n");
     rfidReader.PCD_Init();
     // Init all sensors with default params 
     hum_temp.init(NULL);
@@ -105,7 +103,6 @@ int main()
                     for ( int i = 0; i < rfidReader.uid.size; i++ )
                     {
                         oled.printf("%02X:", rfidReader.uid.uidByte[i]);
-                        //printf("%02X:", rfidReader.uid.uidByte[i]);
                         card_id = card_id + std::to_string(rfidReader.uid.uidByte[i]) + ":";
                     }
                     std::cout << std::string(card_id+"\r\n");
@@ -118,21 +115,16 @@ int main()
 
                     hum_temp.get_temperature(&temperature);
                     hum_temp.get_humidity(&humidity);
-                    //printf("HTS221:  [temp] %.2f C, [hum]   %.2f%%, [UID] %s\r\n", value1, value2, cardid.c_str());
+                    printf("HTS221:  [temp] %.2f C, [hum]   %.2f%%\r\n", temperature, humidity);
              
                     oled.clear();
                     oled.cursor( 1, 0 );
                     oled.printf("Scan successful");
 
-                     /*json j= {
-                        {"temperature", value1},
-                        {"humidity", value2},
-                        {"cardId", cardid}
-                    };*/                    //HttpRequest to backend
+                    //HttpRequest to backend
                     HttpRequest* post_req = new HttpRequest( network, HTTP_POST, "https://m242cloud.azurewebsites.net/api/iotkit");
                     char body[1024];
                     sprintf( body, "{ \"temperature\": \"%f\", \"humidity\": \"%f\", \"UID\": \"%s\"}", temperature, humidity, card_id.c_str());
-                    //sprintf(j);
                     HttpResponse* post_res = post_req->send(body, strlen(body));
                 }
         }

@@ -27,7 +27,7 @@ Ich habe eine Flask API geschrieben und die Datenbank aufgesetzt. Den Code wurde
 Ich habe gelernt wie man mit Flask eine REST API in Python schreibt. Ebenfalls habe ich gelernt wie man auf Azure Sicherheitsregeln umgeht für den Zugriff auf die Datanbank. Dies ist zwar überhaupt nicht empfolen jedoch fehlt mir momentan das Wissen die Datenbank und den Zugriff korrekt zu konfigurieren. C++ stellte sich auch sehr mühsam hereaus weil das herauslesen der UID in eine Variable deutlich komplzierter war als gedacht.\
 Die Zusammenarbeit hat sehr gut funktioniert. Wir sind heute sehr gut weitergekommen mit unseren Arbeiten.
 
-### Tag 6 (26.03.2022/27.03.2022)
+### Wochenende (26.03.2022/27.03.2022)
 #### Aktivität
 Ich habe über das Wochenende den Bug in der Flask API gesucht und mit Python eine CLI geschrieben um ein Frontend zu simulieren. Ebenfalls habe ich die Dokumentation zur Cloud und dem Frontend (CLI) geschrieben.
 #### Reflexion

@@ -37,11 +37,13 @@ Es wurde mithilfe dieser Funktion gelöst:
 ```
 std::to_string(variable)
 ```
+---
 
 ### Sontag (27.03.2022)
 #### Aktivität
 Ich habe heute mit meinem Partner die Verbindung zwischen dem IoTkit und dem Backend getestet. Ebenfalls habe ich mich heute für die Dokumentation beschäftigt.
 #### Reflexion
+Beim Testen der Verbindung stürzt das Program durch irgend ein Grund ab. Es kann sein das die Verbindung vom WLan vielleicht eine Rolle spielt. Plan wäre es nächsten Freitag nochmals zu testen. Habe weitere potentielle Fehler gesucht, habe jedoch keine Entdeckt.
 
 ---
 ## Thema

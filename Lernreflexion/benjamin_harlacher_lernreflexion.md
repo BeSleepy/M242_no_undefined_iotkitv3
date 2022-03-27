@@ -48,6 +48,37 @@ Beim Testen der Verbindung stürzt das Program durch irgend ein Grund ab. Es kan
 ---
 ## Thema
 ### IoT
+Das Internet der Dinge (IdD) (englisch Internet of Things, Kurzform: IoT) ist ein Sammelbegriff für Technologien einer globalen Infrastruktur der Informationsgesellschaften, die es ermöglicht, physische und virtuelle Objekte miteinander zu vernetzen und sie durch Informations- und Kommunikationstechniken zusammenarbeiten zu lassen
+
+---
 ### Sensoren
+Sensoren sind technische Bauteile, die Eigenschaften der Umgebung (z. B.: Wärmestrahlung, Temperatur, Feuchtigkeit, Druck, Schall, Helligkeit oder Beschleunigung) erfassen und in ein weiter verarbeitbares elektrisches Signal umformen.
+
+Beispiele:
+- Hall Sensor
+
+Ein Hall Sensor (auch Hall-Sonde oder Hall-Geber, nach Edwin Hall) nutzt den Hall-Effekt zur Messung von Magnetfeldern. Der auf dem IoTKit verwendetete Hall Sensor kann zur Lage Erfassung eines Permanentmagnetes genutzt werden, d.h. es kann der Nordpol oder Südpol des Magneten bestimmt werden.
+
+Anwendungen
+- Alarmanlagen, z.B. zum Sichern von Fenstern.
+- Im Auto zur Kontrolle ob der Sicherheitsgurt geschlossen ist, als Raddrehzahlsensoren, zur Erkennung des Zündzeitpunkts.
+- Zur Geschwindigkeitsmessung, z.B. für E-Bikes.
+- In der Kraftwerkstechnik zur Erfassung der Turbinendrehzahl.
+
+---
 ### Aktoren
+Aktoren (Wandler; Antriebselemente) setzen die elektronischen Signale in mechanische Bewegung oder andere physikalische Grössen um und greifen damit aktiv in die Umgebung des eingebetteten Systems ein.
+
+Beispiele:
+- Dioden, 7-Segement-Anzeigen, Displays
+- Ventile (Pneumatik, Hydraulik)
+- Motoren (Gleichstrom/Wechselstrom)
+- Magnete (Manipulatoren, Lautsprecher)
+- 
+Anwendungen:
+In vielen Robotern kommen Standard Boards mit individuellen Shield's zum Einsatz.
+Der Siegeszug der DIY (Do-it-yourself) 3D Druckern, wäre ohne die Arduino Mega Boards nicht denkbar gewesen.
+LED Strips eröffnen neue Möglichkeiten für die Dekorative Beleuchtungen von Gegenständen und Räumen.
+
+---
 ### Service

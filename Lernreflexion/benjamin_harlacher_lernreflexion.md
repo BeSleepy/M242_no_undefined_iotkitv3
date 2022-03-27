@@ -24,11 +24,24 @@ Um das Problem zu lösen, müsste man das Child Repo als submodule hinzufügen. 
 #### Aktivität
 Ich habe heute ein weiteres Library hinzugefügt nämlich die für die Temperatur und Feuchtigkeit Sensoren. Habe ebenfalls den Http Request angepasst. Zu beginn war es ein get Request an einer API. Jetzt ist es ein Habe anschliessend die Logik des Programmes angepasst.
 #### Reflexion
+Heute war mein Arbeitspartner abwesend was für die Zusammenarbeit nicht so optimal war, jedoch habe ich die nötigen Information, die ich brauche am Vortag bekommen.
+Ich hatte ein Error den ich noch nicht lesen konnte, nämlich: Die UID einer Karte wird durch eine Iteration gelesen und auf dem OLED dargestellt. Ich möchte jedoch das es in einem String gespeichert wird und anschliessend anhand der Http Request, die Daten gesendet werden. Das Problem liegt daran von UID.Byte zu einem String umzuwandeln.
+
 ---
 ### Tag 5 (25.03.2022)
 #### Aktivität
+Zu beginn der Lektion habe ich mich mit dem Repo Prolem fokussiert. Anschliessend versuchte ich weiter mit dem UID Problem.
 #### Reflexion
-Als Lösung habe ich den Inhalt des Child Repo kopiert und in ein eigenes directory hinzugefügt und somit wurde das Problem gelöst.
+Zur Repo Problem, wurde als Lösung den Inhalt des Child Repo kopiert und in ein eigenes directory hinzugefügt. Für das UID Problem wurde nicht ganz sauber gelöst aber eine erste Lösung ist jetzt vorhanden. Das Program lauft. Ich konnte jedoch noch nicht die Verbindung mit dem Backend testen, da unser Backend noch nicht bereit war.
+Es wurde mithilfe dieser Funktion gelöst:
+```
+std::to_string(variable)
+```
+
+### Sontag (27.03.2022)
+#### Aktivität
+Ich habe heute mit meinem Partner die Verbindung zwischen dem IoTkit und dem Backend getestet. Ebenfalls habe ich mich heute für die Dokumentation beschäftigt.
+#### Reflexion
 
 ---
 ## Thema

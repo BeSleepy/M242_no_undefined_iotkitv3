@@ -18,8 +18,19 @@ Der Frontend soll dem User ermöglichen sich einzuloggen. Sind die Angaben richt
 ### IotKit
 Als Basis Projekt wurde das http Repo verwendet : https://github.com/iotkitv3/http
 
-Anschliessen werden die 
+#### Libraries hinzufügen
+Anschliessen werden die zusätzlichen Libraries zum Projekt hinzugefügt
+- Für die Temperatur und Feuchtigkeit Sensoren: https://os.mbed.com/teams/ST/code/HTS221/
+- Für den Kartenleser: https://github.com/iotkitv3/MFRC522.git
 
+Um eine Library zum Projekt hinzuzufügen muss man zum Library Tap (unten bei der Console) > Pluszeichen siehe Bild und anschliessend den Library Link hinzufügen.
+![image](https://user-images.githubusercontent.com/71868338/160281285-539ccc84-e6c6-42f0-83ad-53420579c6c8.png)
+
+#### Main.cpp Anpassen
+Zu Beginn gemäss der http Repo geklonte Files wird ein http Get Request gesendet und die Daten werden auf dem OLED des IotKit dargestellt. In diesem Projekt möchte man jedoch ein Http Post Request an dem Cloud Api senden. So sollte es angepasst werden. Siehe Bild
+![image](https://user-images.githubusercontent.com/71868338/160281568-db27de60-493e-4a3b-aa84-a90735a63886.png)
+
+Siehe das End Produkt ->
 
 
 ### Backend

@@ -50,13 +50,13 @@ Nach der installation des Backend Codes auf den App Service öffnet man "app_ser
 Nun stehen drei Rest Endpoints zu verfügung:
 ##### "app_service_url"/api/iotkit
 Dieser Endpoint sollte vom iotkit mittels einer POST Request aufgerufen werden um das Login zu Authentifizieren und Sensordaten mitzuteilen.
-Um den Code auf dem iotkit einfach zu halten erwartet der Endpoint einen Body in plain/text mit folgendem Inhalt:
+Um den Code auf dem iotkit einfach zu halten erwartet der Endpoint einen Body in plain/text mit folgendem Inhalt:\
 {"temperature": "x", "humidity": "y", "UID": "z"}
 
 ##### "app_service_url"/login
 Dieser Endpoint wird von der Frontend Applikation mittels einer POST Request aufgerufen um das Login eines Users zu Authentifizieren.
 Dabei wird geprüft ob der letzte Kartenscann mit der UID des Users weniger als einer Minute her ist.
-Der Endpoint erwartet einen Body im Format application/json mit folgendem Inhalt:
+Der Endpoint erwartet einen Body im Format application/json mit folgendem Inhalt:\
 {
   "username": ...,
   "password": ...
@@ -74,8 +74,8 @@ Um HTTPS auf der Cloud zu verwenden müsste man beim starten der Applikation noc
 Das Frontend ist eine Python CLI. Der Source Code befindet sich hier: https://github.com/BeSleepy/M242_no_undefined_iotkitv3/tree/main/CLI
 Für die Ausführung ist vorausgesetzt, dass Python 3.8 installiert ist und die Backend Applikation erfolgreich auf Azure deployt wurde.
 
-Die Python Library "requests" wird verwendet um mit der Backend Applikation über HTTP zu kommunizieren.
+Die Python Library "requests" wird verwendet um mit der Backend Applikation über HTTP zu kommunizieren.\
 ```pip install requests```
 
-Ausgefürt wird das Programm mit:
+Ausgefürt wird das Programm mit:\
 ```python3 main.py```

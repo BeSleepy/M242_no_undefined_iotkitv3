@@ -1,5 +1,3 @@
-/** Beispiel Senden von Sensordaten an ThingSpeak
-    */
 #include "http_request.h"
 #include "OLEDDisplay.h"
 #include "MFRC522.h"
@@ -8,10 +6,7 @@
 #include <string>
 #include <iostream>
 #include <format>
-//#include "json.hpp"
 
-// for convenience
-//using json = nlohmann::json;
 
 #if MBED_CONF_IOTKIT_HTS221_SENSOR == true
 #include "HTS221Sensor.h"
@@ -45,7 +40,7 @@ char key[] = "A2ABBMDJYRAMA6JM";
 // I/O Buffer
 char message[1024];
 
-//DigitalOut myled(MBED_CONF_IOTKIT_LED1);
+//DigitalOut myled(MBED_CONF_IOTKIT_LED1); had to comment this otherwise the program will crash
 
 int main()
 {
@@ -108,26 +103,27 @@ int main()
                     std::cout << std::string(card_id+"\r\n");
 
 
-                   
-                    
+
                     // Print Card type
                     int piccType = rfidReader.PICC_GetType(rfidReader.uid.sak);
-
+                    char body[1024];
                     hum_temp.get_temperature(&temperature);
                     hum_temp.get_humidity(&humidity);
                     printf("HTS221:  [temp] %.2f C, [hum]   %.2f%%\r\n", temperature, humidity);
              
-                    oled.clear();
-                    oled.cursor( 1, 0 );
-                    oled.printf("Scan successful");
+
 
                     //HttpRequest to backend
                     HttpRequest* post_req = new HttpRequest( network, HTTP_POST, "https://m242cloud.azurewebsites.net/api/iotkit");
-                    char body[1024];
                     sprintf( body, "{ \"temperature\": \"%f\", \"humidity\": \"%f\", \"UID\": \"%s\"}", temperature, humidity, card_id.c_str());
                     HttpResponse* post_res = post_req->send(body, strlen(body));
+
+                    oled.clear();
+                    oled.cursor( 1, 0 );
+                    oled.printf("Scan successful");
                 }
         }
+    
     }
     
 }

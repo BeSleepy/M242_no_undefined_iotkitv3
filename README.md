@@ -40,8 +40,8 @@ Microsoft Azure wird verwendet um die um die Backend Applikation zu Hosten. Mit 
 
 Konkret wird ein App Service und ein Azure Database for MySQL-Einzelserver verwendet. 
 Um diese Dienste aufzusetzen folgen sie diesen Tutorials:
-- App Service mit Flask Applikation als Beispiel: https://docs.microsoft.com/en-us/azure/app-service/quickstart-python?tabs=flask%2Cwindows%2Cazure-portal%2Cterminal-bash%2Cvscode-deploy%2Cdeploy-instructions-azportal%2Cdeploy-instructions-zip-azcli
-- Azure Database for MySQL-Einzelserver: https://docs.microsoft.com/en-us/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal
+- App Service mit Flask Applikation als Beispiel: [App Service](https://docs.microsoft.com/en-us/azure/app-service/quickstart-python?tabs=flask%2Cwindows%2Cazure-portal%2Cterminal-bash%2Cvscode-deploy%2Cdeploy-instructions-azportal%2Cdeploy-instructions-zip-azcli)
+- Azure Database for MySQL-Einzelserver: [MySQL-Einzelserver](https://docs.microsoft.com/en-us/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)
 
 Unsere Backend Applikation wird anschliessend (wie im Tutorial erklärt) auf den App Service installiert.
 Wir verwenden Flask mit SQLAlchemy, dies erlaubt uns die DB via Flask zu erstellen.

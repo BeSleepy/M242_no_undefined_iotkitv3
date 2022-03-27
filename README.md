@@ -72,7 +72,7 @@ Der Endpoint gibt einen JSON mit der Temperatur und der Feuchtigkeit zurück.
 Um HTTPS auf der Cloud zu verwenden müsste man beim starten der Applikation noch folgenden Parameter hinzufügen: ssl_context='adhoc'
 
 ### Frontend (CLI)
-Das Frontend ist eine Python CLI. Der Source Code befindet sich hier: [CLI](https://github.com/BeSleepy/M242_no_undefined_iotkitv3/tree/main/CLI)
+Das Frontend ist eine Python CLI. Der Source Code befindet sich hier: [CLI](https://github.com/BeSleepy/M242_no_undefined_iotkitv3/tree/main/CLI)\
 Für die Ausführung ist vorausgesetzt, dass Python 3.8 installiert ist und die Backend Applikation erfolgreich auf Azure deployt wurde.
 
 Die Python Library "requests" wird verwendet um mit der Backend Applikation über HTTP zu kommunizieren.\

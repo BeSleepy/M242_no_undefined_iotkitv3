@@ -50,6 +50,8 @@ Beim Testen der Verbindung stürzt das Program durch irgend ein Grund ab. Es kan
 ### IoT
 Das Internet der Dinge (IdD) (englisch Internet of Things, Kurzform: IoT) ist ein Sammelbegriff für Technologien einer globalen Infrastruktur der Informationsgesellschaften, die es ermöglicht, physische und virtuelle Objekte miteinander zu vernetzen und sie durch Informations- und Kommunikationstechniken zusammenarbeiten zu lassen
 
+Ziel des Internets der Dinge ist es, automatisch relevante Informationen aus der realen Welt zu erfassen, miteinander zu verknüpfen und im Netzwerk verfügbar zu machen. Dieser Informationsbedarf besteht, weil in der realen Welt Dinge einen bestimmten Zustand haben (z. B. „Luft ist kalt“, „Druckertoner ist voll“), dieser Zustand im Netzwerk jedoch nicht verfügbar ist. Ziel ist also, dass viele reale Dinge die eigenen Zustandsinformationen für die Weiterverarbeitung im Netzwerk zur Verfügung stellen.
+
 ---
 ### Sensoren
 Sensoren sind technische Bauteile, die Eigenschaften der Umgebung (z. B.: Wärmestrahlung, Temperatur, Feuchtigkeit, Druck, Schall, Helligkeit oder Beschleunigung) erfassen und in ein weiter verarbeitbares elektrisches Signal umformen.
@@ -74,11 +76,11 @@ Beispiele:
 - Ventile (Pneumatik, Hydraulik)
 - Motoren (Gleichstrom/Wechselstrom)
 - Magnete (Manipulatoren, Lautsprecher)
-- 
+
 Anwendungen:
-In vielen Robotern kommen Standard Boards mit individuellen Shield's zum Einsatz.
-Der Siegeszug der DIY (Do-it-yourself) 3D Druckern, wäre ohne die Arduino Mega Boards nicht denkbar gewesen.
-LED Strips eröffnen neue Möglichkeiten für die Dekorative Beleuchtungen von Gegenständen und Räumen.
+- In vielen Robotern kommen Standard Boards mit individuellen Shield's zum Einsatz.
+- Der Siegeszug der DIY (Do-it-yourself) 3D Druckern, wäre ohne die Arduino Mega Boards nicht denkbar gewesen.
+- LED Strips eröffnen neue Möglichkeiten für die Dekorative Beleuchtungen von Gegenständen und Räumen.
 
 ---
 ### Service

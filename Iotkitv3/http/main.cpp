@@ -105,7 +105,7 @@ int main()
 
 
                     // Print Card type
-                    int piccType = rfidReader.PICC_GetType(rfidReader.uid.sak);
+                    //int piccType = rfidReader.PICC_GetType(rfidReader.uid.sak);
                     char body[1024];
                     hum_temp.get_temperature(&temperature);
                     hum_temp.get_humidity(&humidity);

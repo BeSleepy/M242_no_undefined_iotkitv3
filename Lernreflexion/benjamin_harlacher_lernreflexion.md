@@ -84,3 +84,4 @@ Anwendungen:
 
 ---
 ### Service
+Unsere Backend nimmt die Daten, die vom IoTKit gesendet wird an. Anschliessend wird die Information der Karte als Authentifizierungsmittel verwendet fürs Frontend. Sollte alles in Ordnung sein, werden die Temperatur und Feuchtigkeit Daten, welche von den Senseron stammen am Frontend dargestellt.

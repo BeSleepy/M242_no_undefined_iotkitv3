@@ -72,7 +72,8 @@ Der Endpoint gibt einen JSON mit der Temperatur und der Feuchtigkeit zurück.
 Um HTTPS auf der Cloud zu verwenden müsste man beim starten der Applikation den Zertifikat mitgeben.
 
 ##### IotKit
-Beim IotKit ein Zertifikat muss vorhanden sein, damit es beim HTTPS Request mit geschickt werden kann.
+Beim IotKit ein Zertifikat muss vorhanden sein, damit es beim HTTPS Request mit geschickt werden kann.\
+Referenz: [HTTPS-TUTORIAL](https://os.mbed.com/teams/sandbox/code/http-example/file/4b847971db1b/source/main-https.cpp/)
 
 
 ```

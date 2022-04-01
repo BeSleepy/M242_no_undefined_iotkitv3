@@ -33,9 +33,9 @@ static HTS221Sensor hum_temp(&devI2c);
 static BMP180Wrapper hum_temp( &devI2c );
 #endif
 
-// ThingSpeak URL und API Key ggf. anpassen 
-char host[] = "http://api.thingspeak.com/update";
-char key[] = "A2ABBMDJYRAMA6JM";
+
+char host[] = "https://m242cloud.azurewebsites.net/api/iotkit";
+char key[] = "";
 
 // I/O Buffer
 char message[1024];
@@ -114,7 +114,7 @@ int main()
 
 
                     //HttpRequest to backend
-                    HttpRequest* post_req = new HttpRequest( network, HTTP_POST, "https://m242cloud.azurewebsites.net/api/iotkit");
+                    HttpRequest* post_req = new HttpRequest( network, HTTP_POST, "http://m242cloud.azurewebsites.net/api/iotkit");
                     sprintf( body, "{ \"temperature\": \"%f\", \"humidity\": \"%f\", \"UID\": \"%s\"}", temperature, humidity, card_id.c_str());
                     HttpResponse* post_res = post_req->send(body, strlen(body));
 

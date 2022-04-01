@@ -2,11 +2,11 @@
     "config": {
         "wifi-ssid": {
             "help": "WiFi SSID",
-            "value": "\"LERNKUBE\""
+            "value": "\"AndroidAP\""
         },
         "wifi-password": {
             "help": "WiFi Password",
-            "value": "\"l3rnk4b3\""
+            "value": "\"22172217\""
         }
     },    
     "target_overrides": {

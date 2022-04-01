@@ -34,8 +34,6 @@ static BMP180Wrapper hum_temp( &devI2c );
 #endif
 
 
-char host[] = "https://m242cloud.azurewebsites.net/api/iotkit";
-char key[] = "";
 
 // I/O Buffer
 char message[1024];

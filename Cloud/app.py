@@ -1,86 +1,83 @@
-from cgi import test
 import hashlib
-import datetime
 import json
-
-from flask import Flask
-from flask import request
-from flask import jsonify
+from flask import Flask, request, jsonify, session, redirect
 from flask_cors import CORS
 from flask_httpauth import HTTPBasicAuth
 from time import time
 from flask_mqtt import Mqtt
-
 from db import db
 from models.user import User
 from models.device import Device
-
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
 CORS(app)
 
-username = ''
-password = ''
-server = ''
-db_name = ''
+username = 'undefined@m242-db-undefined'
+password = 'cipw3kdiS9mbj5v'
+server = 'm242-db-undefined.mysql.database.azure.com'
+db_name = 'm242_no_undefined_iotkit'
 port = '3306'
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql://{username}:{password}@{server}:{port}/{db_name}"
 app.config['SCHEDULER_API_ENABLED'] = True
 db.init_app(app)
 
+topic = 'm242_lb03_albisetti_harlacher/iotkit'
+broker = 'cloud.tbz.ch'
 
 app.config['MQTT_BROKER_URL'] = 'cloud.tbz.ch'  # use the free broker from HIVEMQ
 app.config['MQTT_BROKER_PORT'] = 1883  # default port for non-tls connection
 app.config['MQTT_USERNAME'] = ''  # set the username here if you need authentication for the broker
 app.config['MQTT_PASSWORD'] = ''  # set the password here if the broker demands authentication
-app.config['MQTT_KEEPALIVE'] = 15  # set the time interval for sending a ping to the broker to 5 seconds
 app.config['MQTT_TLS_ENABLED'] = False  # set TLS to disabled for testing purposes
-
 mqtt = Mqtt()
+mqtt.init_app(app)
+
 
 @mqtt.on_connect()
 def handle_connect(client, userdata, flags, rc):
-    mqtt.subscribe('m242_lb03_albisetti_harlacher/iotkit')
+    mqtt.subscribe(topic)
+
 
 @mqtt.on_message()
-def handle_mqtt_message(client, userdata, message):
-    payload=message.payload.decode()
-
-    try:
-        json_body = json.loads(payload)
-    except Exception as e:
-        print('Failed to load body as json: ' + str(e))
-        return
-
-    if json_body.get('UID') and json_body.get('temperature') and json_body.get('humidity'):
-        print("Try to load user by UID")
+def handle_mqtt_message(client, userdata, msg):
+    with app.app_context():
+        print('received')
+        payload = msg.payload.decode()
         try:
-            user = User.query.filter_by(card_uid=json_body.get('UID')).first()
+            json_body = json.loads(payload)
         except Exception as e:
-            print(f"Faild to load user with UID {json_body.get('UID')} cause " + str(e))
+            print('Failed to load body as json: ' + str(e))
             return
 
-        print("Try to load device based on user")
-        try:
-            device = Device.query.filter(Device.fk_user == user.id_user).first()
-        except Exception as e:
-            print(f"Faild to load device with UID {json_body.get('UID')} cause " + str(e))
-            return
+        if json_body.get('UID') and json_body.get('temperature') and json_body.get('humidity'):
+            print("Try to load user by UID")
+            try:
+                user = User.query.filter_by(card_uid=json_body.get('UID')).first()
+            except Exception as e:
+                print(f"Faild to load user with UID {json_body.get('UID')} cause " + str(e))
+                return
 
-        sensor_data = {
-            "temperature": json_body.get('temperature'),
-            "humidity": json_body.get('humidity')
-        }
+            print("Try to load device based on user")
+            try:
+                device = Device.query.filter(Device.fk_user == user.id_user).first()
+            except Exception as e:
+                print(f"Faild to load device with UID {json_body.get('UID')} cause " + str(e))
+                return
 
-        print('Set last card scan to current timestamp in seconds')
-        device.last_card_scan = str(time())
-        device.sensor_data = json.dumps(sensor_data)
-        db.session.commit()
-        print("Last card scan updated!")
-        
-    else:
-        print("Body does not contain all required parameters")
+            sensor_data = {
+                "temperature": json_body.get('temperature'),
+                "humidity": json_body.get('humidity')
+            }
+
+            print('Set last card scan to current timestamp in seconds')
+            device.last_card_scan = str(time())
+            device.sensor_data = json.dumps(sensor_data)
+            db.session.commit()
+            print("Last card scan updated!")
+
+        else:
+            print("Body does not contain all required parameters")
 
 
 @app.route('/create_db')
@@ -176,7 +173,7 @@ def get_sensors():
     return jsonify(sensor)
 
 
-@app.route("/api/iotkit", methods=["POST"])
+@app.route("/api/iotkit")
 def iotkit():
     """
     HTTP Request from iotkit with sensor_data and card_id in body
@@ -188,8 +185,7 @@ def iotkit():
     set last_card_scan to current timestamp
     """
     print("-------------------------------------------- iotkit post incomming --------------------------------------------")
-    body = request.get_data()  # may be request.json
-    body = body.decode('ascii')
+    body = session["message"]  # may be request.json
     print('this is body of iotkit request: ' + body)
     print("try to load body to json")
     try:
@@ -230,4 +226,4 @@ def iotkit():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(use_reloader=False)

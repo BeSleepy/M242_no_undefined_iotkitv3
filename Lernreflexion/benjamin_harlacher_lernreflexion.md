@@ -69,7 +69,7 @@ Anwendungen
 
 ---
 ### Aktoren
-Aktoren (Wandler; Antriebselemente) setzen die elektronischen Signale in mechanische Bewegung oder andere physikalische Grössen um und greifen damit aktiv in die Umgebung des eingebetteten Systems ein.
+Aktoren (Wandler; Antriebselemente) setzen die elektronischen Signale in mechanische Bewegung oder andere physikalische Grössen um und greifen damit aktiv in die Umgebung des eingebetteten Systems ein. Aktoren wirken auf die physische Welt.
 
 Beispiele:
 - Dioden, 7-Segement-Anzeigen, Displays
@@ -85,3 +85,29 @@ Anwendungen:
 ---
 ### Service
 Unsere Backend nimmt die Daten, die vom IoTKit gesendet wird an. Anschliessend wird die Information der Karte als Authentifizierungsmittel verwendet fürs Frontend. Sollte alles in Ordnung sein, werden die Temperatur und Feuchtigkeit Daten, welche von den Senseron stammen am Frontend dargestellt.
+
+---
+### MCU (microcontroller unit)
+Mikrocontroller werden halbleiterchips bezeichnet, die einen Prozessorund zugleich Arbeits-und Programmspeicherund Peripheriefunktionenenthalten.
+
+---
+### Bus
+Ein Bus ist ein System zur Datenübertragung zwischen mehreren Teilnehmern über einen gemeinsamen Übertragungsweg.
+
+####
+Bus Topologien
+- Point to Point
+- Linien-Topologie
+- Multiplexing
+
+#### I2C
+I²C ist alsMaster-Slave-Buskonzipiert. Ein Datentransfer wird immer durch einen Master initiiert; der über eine Adresse angesprochene Slave reagiert darauf
+alle Sensoren/Aktoren wo Hexadecimalangeschrieben sind hängenam I2C Bus
+
+---
+### TCP
+#### IP Networking
+Transmission Control Protocol / Internet Protocol (TCP/IP) ist eine Familie von Netzwerkprotokollen
+
+#### IP Socket API
+Ein Socket-API ist eine API, die alle Verbindungsoptionen standardisiert. Es unterstützt sowohl IPv4 als auch IPv6.

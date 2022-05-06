@@ -30,7 +30,7 @@ Ich hatte ein Error den ich noch nicht lesen konnte, nämlich: Die UID einer Kar
 ---
 ### Tag 5 (25.03.2022)
 #### Aktivität
-Zu beginn der Lektion habe ich mich mit dem Repo Prolem fokussiert. Anschliessend versuchte ich weiter mit dem UID Problem.
+Zu beginn der Lektion habe ich mich mit dem Repo Problem fokussiert. Anschliessend versuchte ich weiter mit dem UID Problem.
 #### Reflexion
 Zur Repo Problem, wurde als Lösung den Inhalt des Child Repo kopiert und in ein eigenes directory hinzugefügt. Für das UID Problem wurde nicht ganz sauber gelöst aber eine erste Lösung ist jetzt vorhanden. Das Program lauft. Ich konnte jedoch noch nicht die Verbindung mit dem Backend testen, da unser Backend noch nicht bereit war.
 Es wurde mithilfe dieser Funktion gelöst:
@@ -44,6 +44,30 @@ std::to_string(variable)
 Ich habe heute mit meinem Partner die Verbindung zwischen dem IoTkit und dem Backend getestet. Ebenfalls habe ich mich heute für die Dokumentation beschäftigt.
 #### Reflexion
 Beim Testen der Verbindung stürzt das Program durch irgend ein Grund ab. Es kann sein das die Verbindung vom WLan vielleicht eine Rolle spielt. Plan wäre es nächsten Freitag nochmals zu testen. Habe weitere potentielle Fehler gesucht, habe jedoch keine Entdeckt.
+
+### Tag 6 (01.04.2022/Abgabe LB2)
+#### Aktivität
+Ich habe mit meinem Partner weiter nach dem Fehler gesucht und diese entdeckt. Anschliessend wurde die Dokumentation erweitert bezüglich auf HTTPS. Nachdem alles erledigt war, wurde es dem Lehrer präsentiert.
+#### Reflexion
+Das Problem warum die Verbindung zwischen dem IoTKit und dem Backend nicht funktioniert hat, war das beim IoTkit eine HTTPS request gesendet hat, obwohl die Idee war ein HTTP request zu senden. Für eine HTTPS request müsste man zuerst ein Zertifikat vorbereiten.
+
+### Tag 7 (08.04.2022)
+#### Aktivität
+Ich habe begonnen mqtt ins Projekt einzubauen. Dafür habe ich das mqtt repository geklonnt und die Logik mit dem Kartenleser und das Senden der Sensoren Daten hinzugefügt.
+#### Reflexion
+Das Programm lauft aber die Daten kommen noch nicht an dem Backend. Was genau das Problem ist, weiss ich Stand jetzt noch nicht. Ich vermute jedoch das beim Programm etwas fehlt. Damit das ganze mqtt Logik funktioniert, wurden Topics erstellt damit andere Geräte den Topic subscriben können. Ebenfalls wurde die cloud.tbz.ch als Host bzw. als Broker verwendet.
+
+### Sonntag (01.05.2022)
+#### Aktivität
+Ich habe Node-Red heruntergeladen und ein wenig Experimentiert.
+#### Reflexion
+Mit Node-Red kann man ein Ablauf Flow von unserem Projekt darstellen. Die Verbindung vom mqtt, topic subscriben und die echtzeit Daten die gesendet werden. Es hat zu einem Standpunkt funktioniert, ich konnte die Daten senden aber auf einmal zeigt es mir einen leeren String an. Der Grund ist mir Stand jetzt noch nicht bekannt.
+
+### Tag 8 (06.05.2022)
+#### Aktivität
+Ich habe weiter mit Node-Red experimentiert und eine Lösung für mein Problem gesucht. Habe die Dokumentation von mqtt nochmals gelesen.
+#### Reflexion
+Das Problem war, das ich zwar die Sensor Daten in Variablen gespeichert habe, jedoch gebe ich beim Publishen einen leeren String mit. Ich musste den String den ich beim Publishen mitgebe zuerst noch die Sensor Daten mitgeben.
 
 ---
 ## Thema
@@ -69,7 +93,7 @@ Anwendungen
 
 ---
 ### Aktoren
-Aktoren (Wandler; Antriebselemente) setzen die elektronischen Signale in mechanische Bewegung oder andere physikalische Grössen um und greifen damit aktiv in die Umgebung des eingebetteten Systems ein.
+Aktoren (Wandler; Antriebselemente) setzen die elektronischen Signale in mechanische Bewegung oder andere physikalische Grössen um und greifen damit aktiv in die Umgebung des eingebetteten Systems ein. Aktoren wirken auf die physische Welt.
 
 Beispiele:
 - Dioden, 7-Segement-Anzeigen, Displays
@@ -85,3 +109,29 @@ Anwendungen:
 ---
 ### Service
 Unsere Backend nimmt die Daten, die vom IoTKit gesendet wird an. Anschliessend wird die Information der Karte als Authentifizierungsmittel verwendet fürs Frontend. Sollte alles in Ordnung sein, werden die Temperatur und Feuchtigkeit Daten, welche von den Senseron stammen am Frontend dargestellt.
+
+---
+### MCU (microcontroller unit)
+Mikrocontroller werden halbleiterchips bezeichnet, die einen Prozessorund zugleich Arbeits-und Programmspeicherund Peripheriefunktionenenthalten.
+
+---
+### Bus
+Ein Bus ist ein System zur Datenübertragung zwischen mehreren Teilnehmern über einen gemeinsamen Übertragungsweg.
+
+####
+Bus Topologien
+- Point to Point
+- Linien-Topologie
+- Multiplexing
+
+#### I2C
+I²C ist alsMaster-Slave-Buskonzipiert. Ein Datentransfer wird immer durch einen Master initiiert; der über eine Adresse angesprochene Slave reagiert darauf
+alle Sensoren/Aktoren wo Hexadecimalangeschrieben sind hängenam I2C Bus
+
+---
+### TCP
+#### IP Networking
+Transmission Control Protocol / Internet Protocol (TCP/IP) ist eine Familie von Netzwerkprotokollen
+
+#### IP Socket API
+Ein Socket-API ist eine API, die alle Verbindungsoptionen standardisiert. Es unterstützt sowohl IPv4 als auch IPv6.

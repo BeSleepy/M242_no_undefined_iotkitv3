@@ -178,3 +178,19 @@ publish( mqttNetwork, client, topicAuthentification );
 ```
 
 Siehe genaue Details : [Main.cpp](https://github.com/BeSleepy/M242_no_undefined_iotkitv3/blob/main/Iotkitv3/mqtt/main.cpp)
+
+### Node Red
+Installation Node Red siehe die offizielle Dokumentation: [Node-Red](https://nodered.org/docs/getting-started/windows)
+Wenn alles installiert ist, kann man einfach den Befehl ```node-red```  in die CMD eingeben. Anschliessend ist die Seite für Node-Red aufrufbar.
+
+![image](https://user-images.githubusercontent.com/71868338/167127608-ac067257-c1a0-44e8-aaf7-c3f62d3d30a3.png)  
+Um den Workflow darstellen zu können, braucht es 2 Komponente: "mqtt in-" und "debug-" Node. Siehe Bild
+
+Der mqtt in muss folgendermassen konfiguriert werden:
+
+![image](https://user-images.githubusercontent.com/71868338/167127959-543782fb-e693-4424-b42b-4082e09ef1c7.png)  
+
+Wenn alles richtig konfiguriert ist kann die Applikation getestet werden. Sollte es keine Problem auftreten, dann sollte man folgendes auf dem debug tab (rechts) sehen:  
+![image](https://user-images.githubusercontent.com/71868338/167128640-665c0610-b85c-40ee-9e3e-72435ecc4085.png)  
+
+

@@ -92,7 +92,6 @@ int main()
                     oled.cursor( 1, 0 );                
                     // Print Card UID (2-stellig mit Vornullen, Hexadecimal)
                     oled.printf("UID: ");
-                    
                     for ( int i = 0; i < rfidReader.uid.size; i++ )
                     {
                         oled.printf("%02X:", rfidReader.uid.uidByte[i]);

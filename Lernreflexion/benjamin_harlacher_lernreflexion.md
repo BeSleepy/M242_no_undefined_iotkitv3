@@ -30,7 +30,7 @@ Ich hatte ein Error den ich noch nicht lesen konnte, nämlich: Die UID einer Kar
 ---
 ### Tag 5 (25.03.2022)
 #### Aktivität
-Zu beginn der Lektion habe ich mich mit dem Repo Prolem fokussiert. Anschliessend versuchte ich weiter mit dem UID Problem.
+Zu beginn der Lektion habe ich mich mit dem Repo Problem fokussiert. Anschliessend versuchte ich weiter mit dem UID Problem.
 #### Reflexion
 Zur Repo Problem, wurde als Lösung den Inhalt des Child Repo kopiert und in ein eigenes directory hinzugefügt. Für das UID Problem wurde nicht ganz sauber gelöst aber eine erste Lösung ist jetzt vorhanden. Das Program lauft. Ich konnte jedoch noch nicht die Verbindung mit dem Backend testen, da unser Backend noch nicht bereit war.
 Es wurde mithilfe dieser Funktion gelöst:
@@ -44,6 +44,30 @@ std::to_string(variable)
 Ich habe heute mit meinem Partner die Verbindung zwischen dem IoTkit und dem Backend getestet. Ebenfalls habe ich mich heute für die Dokumentation beschäftigt.
 #### Reflexion
 Beim Testen der Verbindung stürzt das Program durch irgend ein Grund ab. Es kann sein das die Verbindung vom WLan vielleicht eine Rolle spielt. Plan wäre es nächsten Freitag nochmals zu testen. Habe weitere potentielle Fehler gesucht, habe jedoch keine Entdeckt.
+
+### Tag 6 (01.04.2022/Abgabe LB2)
+#### Aktivität
+Ich habe mit meinem Partner weiter nach dem Fehler gesucht und diese entdeckt. Anschliessend wurde die Dokumentation erweitert bezüglich auf HTTPS. Nachdem alles erledigt war, wurde es dem Lehrer präsentiert.
+#### Reflexion
+Das Problem warum die Verbindung zwischen dem IoTKit und dem Backend nicht funktioniert hat, war das beim IoTkit eine HTTPS request gesendet hat, obwohl die Idee war ein HTTP request zu senden. Für eine HTTPS request müsste man zuerst ein Zertifikat vorbereiten.
+
+### Tag 7 (08.04.2022)
+#### Aktivität
+Ich habe begonnen mqtt ins Projekt einzubauen. Dafür habe ich das mqtt repository geklonnt und die Logik mit dem Kartenleser und das Senden der Sensoren Daten hinzugefügt.
+#### Reflexion
+Das Programm lauft aber die Daten kommen noch nicht an dem Backend. Was genau das Problem ist, weiss ich Stand jetzt noch nicht. Ich vermute jedoch das beim Programm etwas fehlt. Damit das ganze mqtt Logik funktioniert, wurden Topics erstellt damit andere Geräte den Topic subscriben können. Ebenfalls wurde die cloud.tbz.ch als Host bzw. als Broker verwendet.
+
+### Sonntag (01.05.2022)
+#### Aktivität
+Ich habe Node-Red heruntergeladen und ein wenig Experimentiert.
+#### Reflexion
+Mit Node-Red kann man ein Ablauf Flow von unserem Projekt darstellen. Die Verbindung vom mqtt, topic subscriben und die echtzeit Daten die gesendet werden. Es hat zu einem Standpunkt funktioniert, ich konnte die Daten senden aber auf einmal zeigt es mir einen leeren String an. Der Grund ist mir Stand jetzt noch nicht bekannt.
+
+### Tag 8 (06.05.2022)
+#### Aktivität
+Ich habe weiter mit Node-Red experimentiert und eine Lösung für mein Problem gesucht. Habe die Dokumentation von mqtt nochmals gelesen.
+#### Reflexion
+Das Problem war, das ich zwar die Sensor Daten in Variablen gespeichert habe, jedoch gebe ich beim Publishen einen leeren String mit. Ich musste den String den ich beim Publishen mitgebe zuerst noch die Sensor Daten mitgeben.
 
 ---
 ## Thema

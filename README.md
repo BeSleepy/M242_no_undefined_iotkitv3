@@ -190,7 +190,7 @@ Der mqtt in muss folgendermassen konfiguriert werden:
 
 ![image](https://user-images.githubusercontent.com/71868338/167127959-543782fb-e693-4424-b42b-4082e09ef1c7.png)  
 
-Wenn alles richtig konfiguriert ist kann die Applikation getestet werden. Sollte es keine Problem auftreten, dann sollte man folgendes auf dem debug tab (rechts) sehen:  
+Wenn alles richtig konfiguriert ist kann die Applikation getestet werden. Sollte es keine Problem auftreten, dann sollte man folgendes auf dem debug tab (rechts) sehen (Die Daten können verschieden sein jedoch sollte kein leeren String angezeigt werden):  
 ![image](https://user-images.githubusercontent.com/71868338/167128640-665c0610-b85c-40ee-9e3e-72435ecc4085.png)  
 
 

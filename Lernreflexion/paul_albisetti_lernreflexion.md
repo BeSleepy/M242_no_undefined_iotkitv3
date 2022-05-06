@@ -36,3 +36,53 @@ Die Backend Applikation, die Datenbanke und die CLI sind fertig und funktioniere
  
 ## Wichtiges zum Mitnehmen
 - Azure (oder allgemein Cloud Diensete) sind sehr praktisch. Bieten möglichkeit eigene Applikation zu hosten und Verfügbar zu machen. Riesengross und sehr kompliziert, jedoch gut Dokumentiert: [Doku](https://docs.microsoft.com/en-us/azure/?product=popular).
+
+## Themen
+### MCU
+Halbleiterchips die einen Prozessor und zugliech Arbeits- und Programmspeicher sowie Peripheriefunktionen enthalten. 
+Peripheriefunktionen sind z.B. CAN-(Controller Area Network), I²C-(Inter-Integrated Circuit), SPI-(Serial Peripheral Interface), serielle Schnittstellen, PWMAusgänge, Analog-Digital-Umsetzer.
+Tritt oft in eingebetteten Systemen unbemerk in Alltag ein (Auto, Heimanwendungen, Medizin, Büroanwendung).
+
+### Bus System
+System zur Datenübertragung zwischen mehreren Teilnehmern über eine gemeinsame Übertragungsweg.
+Es gibt verschiedene Topologien von Bus Systemen:
+- Point-to-Point, Direckte verbindung zwischen zwei Punkten. Beispiel: Serielle Schnittstelle
+- Linien-Topologie. Beispiel: I2C
+- Multiplexing, braucht einen Zusätzlichen Steuerpin, möchte nur die hälfte der Buspin's verwenden indem in einer Phase die eine Hälfte und in einer anderen Phase die andere Hälfte der Signale gesendet werden. Beispiel: SPI
+
+### IoT
+Internet of Things. Vereint die physiche Welt mit der Digitalen. Sensoren nehmen Dinge war, Aktoren wirken auf sie, alles vereint durch das Internet.
+IIoT - Industrial Internet of Things
+CIoT - Consumer Internet of Things
+
+
+
+### GPIO
+General Purpose Input/Output. Allzweckeingabe oder Allzweckausgabe ist ein Ping welcher durch Programmiereung entweder als In oder Output verwendet werden kann.
+GPIO - Kanal ist eine Gruppe von zusammengefasten Pins. Sie werden oft mit Buchsteben bezeichnet.
+Ein einzelner Pin kann meistens mit Buchstaben und Nummer aufgerufen werden (A3).
+Arduino Bezeichner (A0-A5, D0-D15)
+
+### Sensoren
+Sensorene nehmen die Welt um sich herum auf. Beispiel sind:
+- Temperatur
+- Bewegung
+- Helligkeit
+- Kamera
+
+Wichtig: Sie nehmen die Welt auf, und wirken NICHT auf sie (dies ist der Job von Aktoren).
+
+
+### Aktoren
+Aktoren wirken auf die Welt um sich. Beispielsweise mit:
+- Motoren
+- Audio
+- Licht (LED)
+
+Beispiele von Aktoren:
+- Servo
+- Elektromotor
+
+### Mqtt
+Offenes Nachrichtenportokoll für M2M. Basiert auf TCP-Sockets.
+Implementiert Publish and Subscribe Pattern. Braucht dazu aber einen zentralen Server (Message Broker) um die beiden Seiten zu verbinden

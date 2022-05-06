@@ -151,3 +151,30 @@ Die Python Library "requests" wird verwendet um mit der Backend Applikation übe
 
 Ausgefürt wird das Programm mit:\
 ```python3 main.py```
+
+---
+# LB3 für Modul 242 - Mikroprozessoranwendung realisieren
+Für die LB3 benutzen wir das bestende Programm der LB2 jedoch wird sie erweitert.
+
+## Anleitung
+### MQTT
+Zu beginn klone die MQTT Repository : https://github.com/iotkitv3/mqtt.git
+anschliessend füge die Logik vom bestehenden Programm hinzu und wiederhole die Anleitung der LB2. In anderen Worten die Libraries wieder importieren.
+
+#### MQTT konfiguration
+Damit man etwas publishen kann, muss ein Topic erstellt werden.
+```
+char* topicAuthentification = (char*) "m242_lb03_albisetti_harlacher/iotkit";
+```
+Anschliessend muss der Broker bzw. den Host konfiguriert werden.
+```
+char* hostname = (char*) "cloud.tbz.ch";
+```
+
+Damit wir keinen leeren String bzw. Message publishen muss noch die Message aktualisiert werden und anschliessend beim Topic senden.
+```
+sprintf( buf, "%s,%f,%f", card_id.c_str(), temperature, humidity); 
+publish( mqttNetwork, client, topicAuthentification );    
+```
+
+Siehe genaue Details : [Main.cpp](https://github.com/BeSleepy/M242_no_undefined_iotkitv3/blob/main/Iotkitv3/mqtt/main.cpp)

@@ -184,7 +184,6 @@ def iotkit():
     get device with same user.id
     set last_card_scan to current timestamp
     """
-    print("-------------------------------------------- iotkit post incomming --------------------------------------------")
     body = session["message"]  # may be request.json
     print('this is body of iotkit request: ' + body)
     print("try to load body to json")

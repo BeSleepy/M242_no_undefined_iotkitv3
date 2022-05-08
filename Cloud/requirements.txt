@@ -3,4 +3,3 @@ flask_httpauth
 flask_sqlalchemy
 flask_cors
 mysqlclient
-flask_mqtt

@@ -176,8 +176,18 @@ Damit wir keinen leeren String bzw. Message publishen muss noch die Message aktu
 sprintf( buf, "%s,%f,%f", card_id.c_str(), temperature, humidity); 
 publish( mqttNetwork, client, topicAuthentification );    
 ```
-
 Siehe genaue Details : [Main.cpp](https://github.com/BeSleepy/M242_no_undefined_iotkitv3/blob/main/Iotkitv3/mqtt/main.cpp)
+
+#### Verschlüsselung
+Damit die Verbindung zwischen dem IotKit und dem Broker verschlüsselt ist, braucht man ähnlich wie beim HTTPS auch Zertifikate. Jedoch verlauft die Kommunikation anderst. Zuerst muss auf dem Client ein Zertifikate bestehen und das selbe auch für den Broker. Anschliessend muss beim Broker konfiguriert werden das es die TLS Verbindung verwendet und beim Verbindungerstellen mit jeglichen Client einen Zertifikat verlangt. Beim Erstellen des Zertifikates werden 3 wichtige Komponente erstellt: 
+- privater Schlüssel (.key)
+- öffentliches Zertifikat zu diesem Schlüssel (.crt)
+- öffentliches Zertifikat der Certificate Authority (ca.crt)  
+
+Wie man ein Zertifikate erstellt, siehe den gegeben Link.  
+Siehe genaue Details : [MQTT-Kommunikation](https://plantprogrammer.de/mqtt-auf-dem-raspberry-pi-mosquitto-part-ii/)
+
+
 
 ### Node Red
 Installation Node Red siehe die offizielle Dokumentation: [Node-Red](https://nodered.org/docs/getting-started/windows)

@@ -203,4 +203,18 @@ Der mqtt in muss folgendermassen konfiguriert werden:
 Wenn alles richtig konfiguriert ist kann die Applikation getestet werden. Sollte es keine Problem auftreten, dann sollte man folgendes auf dem debug tab (rechts) sehen (Die Daten können verschieden sein jedoch sollte kein leeren String angezeigt werden):  
 ![image](https://user-images.githubusercontent.com/71868338/167128640-665c0610-b85c-40ee-9e3e-72435ecc4085.png)  
 
+### (Cloud) Backend Applikation
+Die (Cloud) Backend Applikation wird gleich Eingerichtet wie bei LB2.
+Einzige änderungen sind kleine Anpassungen für das Frontend. Einfach die neue Codebase in Cloud auf den App Service deployen
 
+### Frontend
+Als Frontend verwenden wir diesmal eine simple PHP Webseite. Sie befindet sich hier: [Frontend](https://github.com/BeSleepy/M242_no_undefined_iotkitv3/tree/main/Frontend)\
+Das Frontend muss auch lokal ausgeführt werden. Wenn PHP bereits im Path ist kann man dazu folgenden Befehl verwenden:
+```
+php -S localhost:1234
+```
+Das Frontend ist nun [hier](http://localhost:1234) erreichbar.
+Bei änderung der URL vom App Service muss diese jeweils im Code angepasst werden. Dabei muss in [login](https://github.com/BeSleepy/M242_no_undefined_iotkitv3/blob/main/Frontend/login.php) und im [board](https://github.com/BeSleepy/M242_no_undefined_iotkitv3/blob/main/Frontend/board.php) die service_url geändert werden
+```
+$service_url = 'https://{DEINE_URL_HIER}/login';
+```

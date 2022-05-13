@@ -135,12 +135,17 @@ def iotkit():
     body = request.get_data()  # may be request.json
     body = body.decode('ascii')
     print('this is body of iotkit request: ' + body)
-    print("try to load body to json")
+    print("try to load body to dictionary")
     try:
-        json_body = json.loads(body)
+        arr_body = body.split(',')
+        json_body = {
+            "temperature": arr_body[1],
+            "humidity": arr_body[2],
+            "UID": arr_body[0]
+        }
     except Exception as e:
-        print('Failed to load body as json: ' + str(e))
-        return 'Failed to load body as json'
+        print('Failed to load body as dict: ' + str(e))
+        return 'Failed to load body as dict'
 
     if json_body.get('UID') and json_body.get('temperature') and json_body.get('humidity'):
         print("Try to load user by UID")

@@ -18,7 +18,7 @@
 session_start();
 $service_url = 'https://m242mqtt.azurewebsites.net/login';
 
-if (empty($_SESSION['loggedin']) == false || $_SESSION['loggedin'] == true) {
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     header("Location: board.php");
 }
 

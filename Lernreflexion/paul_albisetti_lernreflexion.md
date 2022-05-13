@@ -33,7 +33,33 @@ Ich habe über das Wochenende den Bug in der Flask API gesucht und mit Python ei
 #### Reflexion
 Ich habe gelernt wie man text/plain im Body einer Request verwendet. Ursprünglich war die Idee den Body im JSON Format zu haben, dies wurde zur Erleichterung der Logik auf dem Iotkit zu einem JSON als String geänderd. Dies hat in meinen Tests zu einem Fehler geführt da ich denn JSON String im Body mit '' eingeschlossen habe (body = "'{...}'"). Dies führete in der API zu einem Fehler weil das JSON Format im String nicht erkannt wurde. Ebenfalls habe ich das praktische Logging durch die prints im Azure App Service gefunde. Eine CLI mit Python eine sehr schnelle und praktische alternative. Damit habe ich gesehen wie unser Frontend funktionieren müsste und was wir für LB03 alles ändern müssen. Ebenfalls habe ich gelernt wie ich HTTPS implementieren müsste in der Cloud. Das Effektive testen der ganzen Applikation hat noch nicht Funktioniert weil das Iotkit Probleme mit der Internetverbindung hatte.\
 Die Backend Applikation, die Datenbanke und die CLI sind fertig und funktionieren zusammen. Die Umsetzung der LB02 ist somit fertig.
- 
+
+### Tag 6 (01.04.2022/Abgabe LB2)
+#### Aktivität
+Letzte Verbindungsfehler Lösen. Abgabe von LB02. Wir haben HTTPS nicht 100%ig verstanden, nach erklärung konnten wir dies noch in der Doku hinzufügen.
+#### Reflexion
+Wir haben die Url mit HTTPS statt HTTP auf dem IoTKit definiert. Da das IoTKit kein HTTPS kann funktionierte das natürlicherweise nicht, ein nerviger kleinen Flüchtigkeitsfehler. Unser Wissen über HTTPS war auch nicht bessonders vorhanden. Nächstes mal ein bisschen besser einlesen.
+
+### Tag 7 (08.04.2022)
+#### Aktivität
+Ich habe eine Library gesucht und gefunden welche für Flask die mqtt Library von Python implementiert. Im Anschluss habe ich Versucht die Library in unserem Code einzubauen.
+#### Reflexion
+Die API läuft, jedoch bekomme ich keine Daten vom Frontend. Wo das Problem liegt ist noch unklar. Ich muss die API seperat testen um zu identifizieren wo der Fehler liegt.
+
+### Tag 8 (06.05.2022)
+#### Aktivität
+Ich habe die API einzel getestet und das Problem identifiziert und gelöst. Ebenfalls habe ich begonnen das Frontend zu implementieren. Das deployen der API auf Azure hat wegen der Verwendung einer spezifischen Python Library nicht funktioniert.
+#### Reflexion
+Das Problem bei der API lag beim sogenanten App Context von Flask. Ich wusste nicht, dass so etwas existiert und hatte desswegen meine Probleme einen Workaround zu finden. Zusätzlich habe ich noch zwei spezifische Testscript (Publish and Subscribe) erstellt um diesen Teil der API mit mqtt zu testen. Das Deployment zu Azure funktionierte leider nicht. Die mqtt Library in Python verwendet eine weitere Library namens typing. Dies Library ist seit Python 3.7 als standard eingebaut und kann auf gewissen Systemen Probleme machen wenn man sie seperat nochmals installiert. Dies war bei mir auf dem Azure App Service der Fall und da ich kein direkter Zugriff hatte (da nach dem Deployment der App Service down geht) konnte ich typing auch nicht deinstalleiren. Ich bin mir sicher es gäbe einen Workaround, jedoch fehlt mir dazu das Wissen oder die richtige Person zum nachfragen. In Absprache mit der Lehrperson verwenden wir nun Node Red um auf einen Subscrieb von mqtt einen HTTP POST auf unsere API aus. Lokal aber funktiniert unser Backend mit mqtt ohne Node Red.
+
+### Wochenende (07.05.2022/08.05.2022)
+#### Aktivität
+Ich habe das Frontend ersetllt. An der API mussten noch einige kleine Anpassungen durchgeführt werden.
+#### Reflexion
+Die Return Values von der API sind ein wenig Fragwürdig. Da ich nicht wusste wie ich besser mit HTTP Request in PHP umgehen kann habe ich es so gelassen. Für eine wirckliche Applikation müsste ich mich hier noch weiter erkunden, was der korrekte Weg wäre, Responsens zu senden und behandlen. Der Rest des Frontend war relativ simpel.
+
+---
+
 ## Wichtiges zum Mitnehmen
 - Azure (oder allgemein Cloud Diensete) sind sehr praktisch. Bieten möglichkeit eigene Applikation zu hosten und Verfügbar zu machen. Riesengross und sehr kompliziert, jedoch gut Dokumentiert: [Doku](https://docs.microsoft.com/en-us/azure/?product=popular).
 

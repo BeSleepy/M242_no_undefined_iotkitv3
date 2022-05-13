@@ -1,8 +1,5 @@
-from cgi import test
 import hashlib
-import datetime
 import json
-
 from flask import Flask
 from flask import request
 from flask import jsonify
@@ -13,7 +10,6 @@ from time import time
 from db import db
 from models.user import User
 from models.device import Device
-
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
@@ -29,6 +25,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql://{username}:{password}@{server}
 app.config['SCHEDULER_API_ENABLED'] = True
 
 db.init_app(app)
+
 
 @app.route('/create_db')
 def create_db():
@@ -67,26 +64,26 @@ def login():
         }
         :return:
     """
-    body = request.json  # depending on input from php my be request.json
+    body = request.form  # depending on input from php my be request.json
     if body.get('username') and body.get('password'):
         user = User.query.filter_by(username=body.get('username')).first()
         if not user:
-            return "False"
+            return {"Status": "False"}
         hashed_password = hashlib.sha256(body['password'].encode('utf-8')).hexdigest()
         if not hashed_password == user.password:
-            return "False"
+            return {"Status": "False"}
 
         device = Device.query.filter(Device.fk_user == user.id_user).first()
         last_card_scan = device.last_card_scan
         current_time = time()
 
         if float(last_card_scan) + 60 >= current_time:
-            return "True"
+            return {"Status": "True"}
         else:
-            return "False"
+            return {"Status": "False"}
 
     else:
-        return "False"
+        return {"Status": "False"}
 
 
 @auth.verify_password
@@ -138,12 +135,17 @@ def iotkit():
     body = request.get_data()  # may be request.json
     body = body.decode('ascii')
     print('this is body of iotkit request: ' + body)
-    print("try to load body to json")
+    print("try to load body to dictionary")
     try:
-        json_body = json.loads(body)
+        arr_body = body.split(',')
+        json_body = {
+            "temperature": arr_body[1],
+            "humidity": arr_body[2],
+            "UID": arr_body[0]
+        }
     except Exception as e:
-        print('Failed to load body as json: ' + str(e))
-        return 'Failed to load body as json'
+        print('Failed to load body as dict: ' + str(e))
+        return 'Failed to load body as dict'
 
     if json_body.get('UID') and json_body.get('temperature') and json_body.get('humidity'):
         print("Try to load user by UID")
@@ -170,11 +172,10 @@ def iotkit():
         device.sensor_data = json.dumps(sensor_data)
         db.session.commit()
         return "Last card scan updated!"
-        
     else:
         print("Body does not contain all required parameters")
         return "Body does not contain all required parameters"
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, use_reloader=False)

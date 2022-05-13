@@ -15,10 +15,10 @@ app = Flask(__name__)
 auth = HTTPBasicAuth()
 CORS(app)
 
-username = 'undefined@m242-db-undefined'
-password = 'cipw3kdiS9mbj5v'
-server = 'm242-db-undefined.mysql.database.azure.com'
-db_name = 'm242_no_undefined_iotkit'
+username = ''
+password = ''
+server = ''
+db_name = ''
 port = '3306'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql://{username}:{password}@{server}:{port}/{db_name}"
